@@ -6,6 +6,6 @@
   tasks:
   - name: "learning devsecops title"
     ansible.builtin.debug:
-      msg: "course name {{ course }}, duration{{ duration }}, trainer{{ trainer }} "
+      msg: "course name {{ course }}, duration {{ duration }}, trainer {{ trainer }} "
 
   
