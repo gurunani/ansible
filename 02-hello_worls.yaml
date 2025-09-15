@@ -3,5 +3,5 @@
   connection: local
   tasks:
     - name: print hello world
-      ansible.butiltin.debug:
+      ansible.builtin.debug:
         msg: "hello leaning guru"
