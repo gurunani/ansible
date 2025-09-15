@@ -1,0 +1,19 @@
+- name : learning vars in ansible
+  hosts: local
+  connection: local
+  vars:
+    course: ansible
+    duration: 10hr
+    trainer: shiva kumar reddy
+
+  tasks:
+  - name: learning courses in joindevops
+    vars:
+      course: jenkins
+    ansible.builtin.debug:
+      msg : "course name is {{course}} , duration is {{duration}} and trainer is {{trainer}}"
+
+  tasks:
+  - name: learning courses in joindevops again
+    ansible.builtin.debug:
+      msg : "course name is {{course}} , duration is {{duration}} and trainer is {{trainer}}"
