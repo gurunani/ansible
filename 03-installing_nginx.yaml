@@ -1,6 +1,6 @@
 - name: installing nginx and run
   hosts: frontend
-  become: yes
+  become: yes #root acess
   tasks:
     - name: install nginx server
       ansible.builtin.package:
