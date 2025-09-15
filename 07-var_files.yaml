@@ -1,0 +1,11 @@
+- name: 1
+  hosts: local
+  connection: local
+  vars_files:
+  - course.yaml
+  tasks:
+  - name: "learning devsecops title"
+    ansible.builtin.debug:
+      msg: "course name {{ course }}, duration{{ duration }}, trainer{{ trainer }} "
+
+  
