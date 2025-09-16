@@ -1,5 +1,5 @@
-- name: loops in ansible 
-  host: local
+- name : loops in ansible 
+  host : local
   connections : local
   tasks: 
   - name : loops in ansible
