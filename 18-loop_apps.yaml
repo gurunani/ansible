@@ -5,8 +5,28 @@
   tasks:
     - name: installing apps
       ansible.builtin.package:
-      name: "{{ item }}"
+        name: "{{ item }}"
+        state: present
       loop:
         - nginx
         - httpd
         - mysql
+
+
+# - name: loop for apps
+#   hosts: frontend
+#   become: yes
+
+#   tasks:
+#     - name: installing apps
+#       ansible.builtin.package:
+#         name: "{{ item }}"
+#         state: present
+#       loop:
+#         - nginx
+#         - httpd
+#         - mysql
+
+
+
+          
