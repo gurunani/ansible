@@ -1,0 +1,12 @@
+- name: loop for apps
+  hosts: frontend
+  become : yes
+
+  tasks:
+    - name: installing apps
+      ansible.builtin.package:
+      name: "{{ item }}"
+      loop:
+        - nginx
+        - httpd
+        - mysql
