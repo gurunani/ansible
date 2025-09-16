@@ -1,49 +1,56 @@
-- name: functions
-  hosts: local
+- name: functions demo
+  hosts: localhost
   connection: local
   vars:
     persons: "Ramesh,Suresh,Raheem,Joseph"
   tasks:
-  - name: check undefined variable
-    ansible.builtin.debug:
-      msg: "Hello, {{ person | default('Ramesh') }}"
 
-  - name: print names
-    ansible.builtin.debug:
-      msg: "Hello {{ persons | split(',') }}"
+    - name: Check undefined variable
+      ansible.builtin.debug:
+        msg: "Hello, {{ person | default('Ramesh') }}"
 
-  - name: convert map into list
-    vars:
-      course:
-        name: ansible
-        duration: 10HR
-        trainer: sivakumar
-    ansible.builtin.debug:
-      msg: "Course Info: {{ course | dict2items  }}"
+    - name: Print each name individually
+      ansible.builtin.debug:
+        msg: "Hello {{ item }}"
+      loop: "{{ persons.split(',') }}"
 
-  - name: convert list into map
-    vars:
-      course:
-      - {'key': 'name', 'value': 'ansible'}
-      - {'key': 'duration', 'value': '10HR'}
-      - {'key': 'trainer', 'value': 'sivakumar'}
-    ansible.builtin.debug:
-      msg: "Course Info: {{ course | items2dict  }}"
+    - name: Convert map into list
+      vars:
+        course:
+          name: ansible
+          duration: 10HR
+          trainer: Guru
+      ansible.builtin.debug:
+        msg: "Course Info as list: {{ course | dict2items }}"
 
-  - name: convert to uppercase
-    vars:
-      name: "Sivakumar Reddy M"
-    ansible.builtin.debug:
-      msg: "Hello {{ name | upper }}"
+    - name: Convert list into map
+      vars:
+        course_list:
+          - {'key': 'name', 'value': 'ansible'}
+          - {'key': 'duration', 'value': '10HR'}
+          - {'key': 'trainer', 'value': 'Guru'}
+      ansible.builtin.debug:
+        msg: "Course Info as dict: {{ course_list | items2dict }}"
 
-  - name: convert to lowercase
-    vars:
-      name: "Sivakumar Reddy M"
-    ansible.builtin.debug:
-      msg: "Hello {{ name | lower }}"
+    - name: Convert name to uppercase
+      vars:
+        name: "Guru"
+      ansible.builtin.debug:
+        msg: "Uppercase: {{ name | upper }}"
 
-  - name: check IP address is valid or not
-    vars:
-      ip: "192.168.1.1"
-    ansible.builtin.debug:
-      msg: "{{ ip | ansible.utils.ipaddr }}"
+    - name: Convert name to lowercase
+      vars:
+        name: "Guru"
+      ansible.builtin.debug:
+        msg: "Lowercase: {{ name | lower }}"
+
+    - name: Check if IP address is valid
+      vars:
+        ip: "192.168.1.1"
+      ansible.builtin.debug:
+        msg: >
+          {% if ip | ipaddr %}
+            {{ ip }} is a valid IP
+          {% else %}
+            {{ ip }} is not a valid IP
+          {% endif %}
