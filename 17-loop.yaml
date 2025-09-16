@@ -2,7 +2,7 @@
   host : local
   connections : local
   tasks: 
-  - name : loops in ansible
+  - name : read names
     ansible.builtin.debug:
       msg: "hi ra {{ item }}"
     loops:
