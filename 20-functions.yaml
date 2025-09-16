@@ -2,15 +2,15 @@
   hosts: local
   connection: local
   vars:
-    persons: "laji,sujay,minnu,bujji"
+    persons: "Ramesh,Suresh,Raheem,Joseph"
   tasks:
-  - name: functions in ansible
+  - name: check undefined variable
     ansible.builtin.debug:
-      msg : "hello {{ guru | default('heart') }}"
+      msg: "Hello, {{ person | default('Ramesh') }}"
 
-  - name: print persons
+  - name: print names
     ansible.builtin.debug:
-      msg : "hello {{ persons | split(',') }}"
+      msg: "Hello {{ persons | split(',') }}"
 
   - name: convert map into list
     vars:
