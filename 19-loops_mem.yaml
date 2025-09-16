@@ -1,0 +1,13 @@
+- name: loop for apps
+  hosts: frontend
+  become : yes
+
+  tasks:
+    - name: installing apps
+      ansible.builtin.package:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop:
+        - {name: 'zip' , state: 'present'}
+        - {name: 'htop' , state: 'absent'}
+        - {name: 'nginx' , state: 'absent'}
