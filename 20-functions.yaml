@@ -1,7 +1,13 @@
 - name: functions
   hosts: local
   connection: local
+  vars:
+    persons: "laji,sujay,minnu,bujji"
   tasks:
   - name: functions in ansible
     ansible.builtin.debug:
       msg : "hello {{ guru | default('heart') }}"
+
+  - name: print persons
+    ansible.builtin.debug:
+      msg : "hello {{ persons | split(',') }}"
