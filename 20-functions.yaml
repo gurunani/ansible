@@ -54,3 +54,13 @@
           {% else %}
             {{ ip }} is not a valid IP
           {% endif %}
+
+# Ah! The playbook ran fine except for the last task (IP validation).
+#Failed to import the required Python library (netaddr)
+
+
+# For Amazon Linux / RHEL / CentOS
+#sudo yum install python3-netaddr -y
+
+# Or using pip
+#pip3 install netaddr --user
